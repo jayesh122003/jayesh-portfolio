@@ -85,8 +85,8 @@ p { margin: 0 0 1rem; }
 .nav-toggle-bar { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; border-radius: 2px; }
 
 @media (max-width: 760px) {
-  .nav-toggle { display: block; }
-  .nav-menu { position: fixed; top: var(--header-h); left: 0; right: 0; background: rgba(15,18,34,.95); border-bottom: 1px solid rgba(255,255,255,.06); padding: .75rem; display: grid; grid-template-columns: 1fr; gap: .5rem; transform: translateY(-8px); opacity: 0; pointer-events: none; transition: .2s ease; }
+  .nav-toggle { display: block; position: relative; z-index: 2; }
+  .nav-menu { position: fixed; top: var(--header-h); left: 0; right: 0; background: rgba(15,18,34,.95); border-bottom: 1px solid rgba(255,255,255,.06); padding: .75rem; display: grid; grid-template-columns: 1fr; gap: .5rem; transform: translateY(-8px); opacity: 0; pointer-events: none; transition: .2s ease; height: calc(100dvh - var(--header-h)); overflow: auto; overscroll-behavior: contain; z-index: 1; }
   .nav-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
 }
 
@@ -198,5 +198,10 @@ body::after {
 /* If your header is taller on mobile, raise the variable */
 @media (max-width: 760px) {
   :root { --header-h: 72px; }
+}
+
+.no-scroll {
+  overflow: hidden;
+  touch-action: none;
 }
   
